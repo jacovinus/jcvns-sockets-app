@@ -24,7 +24,9 @@ export class WebsocketService {
       console.log('desconectado del servidor');
       this.socketStatus = false;
 
+
     })
+    this.cargarStorage()
   }
   emit(evt: string, payload?: any, cb?: Function) {
     console.log('Emitiendo', evt);
