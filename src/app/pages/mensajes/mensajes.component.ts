@@ -11,7 +11,9 @@ public usuario: string =''
   constructor(
     public wsService : WebsocketService
   ) { }
-
+salir(){
+  this.wsService.logoutWS();
+}
   ngOnInit(): void {
     this.usuario = this.wsService.usuario.nombre
   }
