@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { ChatService } from 'src/app/services/chat.service';
 import { Subscription } from 'rxjs';
 
@@ -12,6 +12,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   mensajesSubscription: Subscription;
   mensajes: any[] = [];
   elemento: HTMLElement;
+@Input() user;
   constructor(
     public chatService: ChatService
   ) { }
@@ -31,10 +32,10 @@ export class ChatComponent implements OnInit, OnDestroy {
       return;
     }
     console.log(this.texto);
-    this.chatService.sendMessage(this.texto)
+    this.chatService.sendMessage(this.texto, this.user)
     this.texto = ''
-
   }
+
   ngOnDestroy() {
     this.mensajesSubscription.unsubscribe();
   }
